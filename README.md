@@ -17,4 +17,4 @@ After downloading, place the weight file in the `weight` folder alongside other 
 
 To execute the program, run the `main.py` file using the following format:
 
-python main.py --image1_path <path_to_image1> --image2_path <path_to_image2> --arch <model_architecture> --batch_size <batch_size> --cpu_mode <true_or_false> --embedding_size <embedding_size> --workers <num_of_workers> --model_path <path_to_model_weights> --onnx_output_path <path_to_save_onnx>
+`python main.py --image1_path <path_to_image1> --image2_path <path_to_image2> --arch <model_architecture> --batch_size <batch_size> --cpu_mode <true_or_false> --embedding_size <embedding_size> --workers <num_of_workers> --model_path <path_to_model_weights> --onnx_output_path <path_to_save_onnx>`
