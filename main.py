@@ -28,7 +28,7 @@ if not os.path.exists(args.model_path):
 
 # Initialize
 similarity_calculator = VectorSimilarity()
-image_paths = [args.image_path1, args.image_path2]
+image_paths = [args.image1_path, args.image2_path]
 
 # Base Approach usingimage_paths MegafaceEmbeddingGenerator
 print("************************** Base Approach **************************")
@@ -44,7 +44,7 @@ feature_generator = MegafaceEmbeddingGenerator(
 embeddings = feature_generator.extract_features(image_paths)
 
 cosine_similarity = similarity_calculator.cosine_similarity(embeddings[0], embeddings[1])
-print(f"Cosine similarity between [{args.image_path1}] and [{args.image_path2}]: {cosine_similarity:.5f}")
+print(f"Cosine similarity between [{args.image1_path}] and [{args.image2_path}]: {cosine_similarity:.5f}")
 
 # Onnx Approach
 print("************************** Onnx Approach **************************")
@@ -59,4 +59,4 @@ feature_generator = OnnxEmbeddingGenerator(
 embeddings = feature_generator.extract_features(image_paths)
 
 cosine_similarity = similarity_calculator.cosine_similarity(embeddings[0], embeddings[1])
-print(f"Cosine similarity between [{args.image_path1}] and [{args.image_path2}]: {cosine_similarity:.5f}")
+print(f"Cosine similarity between [{args.image1_path}] and [{args.image2_path}]: {cosine_similarity:.5f}")
