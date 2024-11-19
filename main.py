@@ -26,10 +26,11 @@ args = parser.parse_args()
 if not os.path.exists(args.model_path):
     raise FileNotFoundError(f'{args.model_path} does not exist')
 
-# Initialize similarity calculator
+# Initialize
 similarity_calculator = VectorSimilarity()
+image_paths = [args.image_path1, args.image_path2]
 
-# Base Approach using MegafaceEmbeddingGenerator
+# Base Approach usingimage_paths MegafaceEmbeddingGenerator
 print("************************** Base Approach **************************")
 feature_generator = MegafaceEmbeddingGenerator(
     arch=args.arch,
@@ -40,7 +41,7 @@ feature_generator = MegafaceEmbeddingGenerator(
     model_path=args.model_path,
 )
 
-embeddings = feature_generator.extract_features(args.image_paths)
+embeddings = feature_generator.extract_features(image_paths)
 
 cosine_similarity = similarity_calculator.cosine_similarity(embeddings[0], embeddings[1])
 print(f"Cosine similarity between [{args.image_path1}] and [{args.image_path2}]: {cosine_similarity:.5f}")
@@ -55,7 +56,7 @@ feature_generator = OnnxEmbeddingGenerator(
     batch_size=args.batch_size,
     cpu_mode=args.cpu_mode)
 
-embeddings = feature_generator.extract_features(args.image_paths)
+embeddings = feature_generator.extract_features(image_paths)
 
 cosine_similarity = similarity_calculator.cosine_similarity(embeddings[0], embeddings[1])
 print(f"Cosine similarity between [{args.image_path1}] and [{args.image_path2}]: {cosine_similarity:.5f}")
